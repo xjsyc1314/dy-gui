@@ -13,7 +13,7 @@ const expandPanelBtn = document.getElementById('expandPanelBtn');
 const leftPanel = document.getElementById('leftPanel');
 const expandHint = document.getElementById('expandHint');
 const clearLogBtn = document.getElementById('clearLogBtn');
-const copyLogBtn = document.getElementById('copyLogBtn');
+// const copyLogBtn = document.getElementById('copyLogBtn');
 const browseBtn = document.getElementById('browseBtn');
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 
@@ -94,14 +94,14 @@ clearLogBtn.addEventListener('click', () => {
     log('🗑️ 日志已清除');
 });
 
-copyLogBtn.addEventListener('click', () => {
-    const text = logArea.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        log('📋 日志已复制到剪贴板');
-    }).catch(() => {
-        log('❌ 复制失败，请手动选择复制');
-    });
-});
+// copyLogBtn.addEventListener('click', () => {
+//     const text = logArea.innerText;
+//     navigator.clipboard.writeText(text).then(() => {
+//         log('📋 日志已复制到剪贴板');
+//     }).catch(() => {
+//         log('❌ 复制失败，请手动选择复制');
+//     });
+// });
 
 togglePanelBtn.addEventListener('click', () => {
     leftPanel.classList.add('collapsed');
