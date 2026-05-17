@@ -15,10 +15,11 @@ const expandHint = document.getElementById('expandHint');
 const clearLogBtn = document.getElementById('clearLogBtn');
 const copyLogBtn = document.getElementById('copyLogBtn');
 const browseBtn = document.getElementById('browseBtn');
+const themeToggleBtn = document.getElementById('themeToggleBtn');
 
 let currentCookies = null;
 
-// 初始化默认下载路径（从主进程获取 exe 所在目录下的 Downloaded）
+// 初始化默认下载路径
 (async () => {
     const defaultPath = await window.electronAPI.getDefaultDownloadPath();
     savePathInput.value = defaultPath;
@@ -111,9 +112,24 @@ expandPanelBtn.addEventListener('click', () => {
     expandHint.style.display = 'none';
 });
 
+// 主题切换
+themeToggleBtn.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    themeToggleBtn.textContent = isLight ? '🌙' : '☀️';
+    window.electronAPI.saveSettings({ theme: isLight ? 'light' : 'dark' });
+});
+
+// 加载设置（路径和主题）
 window.electronAPI.onLoadSettings((settings) => {
     if (settings.downloadPath) {
         savePathInput.value = settings.downloadPath;
+    }
+    if (settings.theme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggleBtn.textContent = '🌙';
+    } else {
+        document.body.classList.remove('light-mode');
+        themeToggleBtn.textContent = '☀️';
     }
 });
 

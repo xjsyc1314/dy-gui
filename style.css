@@ -1,96 +1,163 @@
+/* === 基础变量 === */
+:root {
+    --bg-primary: #1e1e2e;
+    --bg-secondary: #181825;
+    --bg-tertiary: #11111b;
+    --border-color: #313244;
+    --text-primary: #cdd6f4;
+    --text-secondary: #a6adc8;
+    --accent: #cba6f7;
+    --input-bg: #1e1e2e;
+    --input-border: #45475a;
+    --status-bg: #313244;
+    --browser-bar-bg: #181825;
+    --browser-bar-border: #313244;
+    --go-btn-bg: #45475a;
+    --go-btn-hover: #5a5d6e;
+    --browse-btn-bg: #45475a;
+    --browse-btn-hover: #5a5d6e;
+    --btn-cookie-bg: #a6e3a1;
+    --btn-cookie-color: #1e1e2e;
+    --btn-download-bg: #89b4fa;
+    --btn-download-color: #1e1e2e;
+    --btn-stop-bg: #f38ba8;
+    --btn-stop-color: #1e1e2e;
+    --log-bg: #11111b;
+    --log-color: #cdd6f4;
+    --log-action-color: #f38ba8;
+}
+
+/* 亮色主题变量 */
+body.light-mode {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #eaeaea;
+    --border-color: #d0d0d0;
+    --text-primary: #1e1e2e;
+    --text-secondary: #555555;
+    --accent: #6c5ce7;
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --status-bg: #e8e8e8;
+    --browser-bar-bg: #ffffff;
+    --browser-bar-border: #d0d0d0;
+    --go-btn-bg: #e0e0e0;
+    --go-btn-hover: #cccccc;
+    --browse-btn-bg: #e0e0e0;
+    --browse-btn-hover: #cccccc;
+    --btn-cookie-bg: #a6e3a1;
+    --btn-cookie-color: #1e1e2e;
+    --btn-download-bg: #89b4fa;
+    --btn-download-color: #1e1e2e;
+    --btn-stop-bg: #f38ba8;
+    --btn-stop-color: #1e1e2e;
+    --log-bg: #f0f0f0;
+    --log-color: #1e1e2e;
+    --log-action-color: #d63031;
+}
+
+/* === 全局样式 === */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: #1e1e2e; color: #cdd6f4; }
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background 0.3s, color 0.3s;
+}
 .container { display: flex; height: 100vh; }
 
-/* 左侧面板 */
+/* === 左侧面板 === */
 .left-panel {
-    width: 380px; background: #181825; display: flex; flex-direction: column;
-    padding: 20px; border-right: 1px solid #313244; transition: width 0.3s;
+    width: 380px; background: var(--bg-secondary);
+    display: flex; flex-direction: column;
+    padding: 20px; border-right: 1px solid var(--border-color);
+    transition: width 0.3s, background 0.3s;
 }
 .left-panel.collapsed { width: 0; padding: 0; overflow: hidden; border-right: none; }
 
 .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.panel-header h1 { font-size: 1.4em; color: #cba6f7; }
-.toggle-btn {
-    background: none; border: none; color: #cdd6f4; font-size: 18px; cursor: pointer;
+.panel-header h1 { font-size: 1.4em; color: var(--accent); }
+.header-buttons { display: flex; align-items: center; gap: 8px; }
+
+.toggle-btn, .theme-btn {
+    background: none; border: none; color: var(--text-primary); font-size: 18px; cursor: pointer;
     width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
     border-radius: 5px; transition: background 0.2s;
 }
-.toggle-btn:hover { background: #313244; }
+.toggle-btn:hover, .theme-btn:hover { background: var(--border-color); }
 
 .config-section { margin-bottom: 18px; }
-.config-section label { display: block; font-size: 0.9em; margin-bottom: 6px; color: #a6adc8; }
+.config-section label { display: block; font-size: 0.9em; margin-bottom: 6px; color: var(--text-secondary); }
 
-/* 保存路径行 */
 .path-row { display: flex; gap: 5px; }
 .path-row input {
-    flex: 1; padding: 10px; background: #1e1e2e; border: 1px solid #45475a;
-    border-radius: 8px; color: #cdd6f4; font-size: 14px;
+    flex: 1; padding: 10px; background: var(--input-bg); border: 1px solid var(--input-border);
+    border-radius: 8px; color: var(--text-primary); font-size: 14px;
 }
 .browse-btn {
-    background: #45475a; border: none; color: #cdd6f4; font-size: 16px;
+    background: var(--browse-btn-bg); border: none; color: var(--text-primary); font-size: 16px;
     width: 40px; border-radius: 8px; cursor: pointer; transition: background 0.2s;
 }
-.browse-btn:hover { background: #5a5d6e; }
+.browse-btn:hover { background: var(--browse-btn-hover); }
 
 .config-section select {
-    width: 100%; padding: 10px; background: #1e1e2e; border: 1px solid #45475a;
-    border-radius: 8px; color: #cdd6f4; font-size: 14px;
+    width: 100%; padding: 10px; background: var(--input-bg); border: 1px solid var(--input-border);
+    border-radius: 8px; color: var(--text-primary); font-size: 14px;
 }
 
 .button-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
-/* 去掉通用按钮的 flex: 1，让按钮宽度由内容决定 */
 button {
     border: none; border-radius: 8px; cursor: pointer;
     font-weight: 600; font-size: 14px; transition: 0.2s;
     white-space: nowrap;
 }
-.button-group button {
-    padding: 12px 13px;
-}
-.btn-cookie { background: #a6e3a1; color: #1e1e2e; }
-.btn-cookie:hover { background: #94e2d5; }
-.btn-download { background: #89b4fa; color: #1e1e2e; }
-.btn-download:hover { background: #b4befe; }
-.btn-stop { background: #f38ba8; color: #1e1e2e; }
-.btn-stop:hover { background: #eba0ac; }
+.button-group button { padding: 12px 13px; }
+.btn-cookie { background: var(--btn-cookie-bg); color: var(--btn-cookie-color); }
+.btn-cookie:hover { opacity: 0.85; }
+.btn-download { background: var(--btn-download-bg); color: var(--btn-download-color); }
+.btn-download:hover { opacity: 0.85; }
+.btn-stop { background: var(--btn-stop-bg); color: var(--btn-stop-color); }
+.btn-stop:hover { opacity: 0.85; }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .status {
-    margin-top: 10px; padding: 8px; background: #313244; border-radius: 6px;
-    font-size: 13px; color: #a6e3a1;
+    margin-top: 10px; padding: 8px; background: var(--status-bg); border-radius: 6px;
+    font-size: 13px; color: var(--text-primary);
 }
 
 .log-header {
     display: flex; justify-content: space-between; align-items: center;
     margin-top: 15px; margin-bottom: 5px;
 }
-.log-header span { font-size: 0.9em; color: #a6adc8; }
+.log-header span { font-size: 0.9em; color: var(--text-secondary); }
 .log-action-btn {
-    background: none; border: none; color: #f38ba8; cursor: pointer; font-size: 13px;
+    background: none; border: none; color: var(--log-action-color); cursor: pointer; font-size: 13px;
     margin-left: 10px;
 }
 .log-action-btn:hover { text-decoration: underline; }
 
 .log-area {
-    flex: 1; padding: 10px; background: #11111b; border-radius: 8px;
+    flex: 1; padding: 10px; background: var(--log-bg); border-radius: 8px;
     overflow-y: auto; font-family: monospace; font-size: 12px; line-height: 1.5;
-    color: #cdd6f4;
+    color: var(--log-color);
 }
 
+/* === 右侧区域 === */
 .right-panel { flex: 1; display: flex; flex-direction: column; position: relative; }
 .expand-hint { position: absolute; top: 10px; left: 10px; z-index: 10; }
 .browser-controls {
+    display: flex; height: 40px; background: var(--browser-bar-bg);
+    border-bottom: 1px solid var(--browser-bar-border);
     margin-left: 10px;
-    display: flex; height: 40px; background: #181825; border-bottom: 1px solid #313244;
 }
 .url-bar {
-    flex: 1; background: transparent; border: none; padding: 0 15px; color: #cdd6f4;
-    font-size: 14px;
+    flex: 1; background: transparent; border: none; padding: 0 15px;
+    color: var(--text-primary); font-size: 14px;
 }
 .go-btn {
-    width: 30px; background: #45475a; color: #cdd6f4; border: none; cursor: pointer;
-    font-size: 16px; display: flex; align-items: center; justify-content: center;
+    width: 30px; background: var(--go-btn-bg); color: var(--text-primary);
+    border: none; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
     border-radius: 0;
 }
-.go-btn:hover { background: #5a5d6e; }
+.go-btn:hover { background: var(--go-btn-hover); }
