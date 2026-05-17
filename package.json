@@ -1,0 +1,35 @@
+{
+  "name": "douyin-downloader-gui",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win portable"
+  },
+  "build": {
+    "appId": "com.yourname.douyin",
+    "productName": "抖音下载器",
+    "win": {
+      "target": "portable"
+    },
+    "extraResources": [
+      { "from": "python/python.zip", "to": "python.zip" }
+    ],
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "style.css",
+      "webview-preload.js",
+      "package.json"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

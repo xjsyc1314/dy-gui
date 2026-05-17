@@ -1,0 +1,9 @@
+@"
+dist/
+node_modules/
+python/python.zip
+douyin-downloader/
+*.log
+.env
+settings.json
+"@ | Out-File -FilePath .gitignore -Encoding utf8

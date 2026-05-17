@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src *;">
+    <title>抖音下载器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" id="appContainer">
+    <!-- 左侧面板 -->
+    <div class="left-panel" id="leftPanel">
+        <div class="panel-header">
+            <h1>🎵 抖音下载器</h1>
+            <button id="togglePanelBtn" class="toggle-btn" title="隐藏面板">◀</button>
+        </div>
+        <div class="config-section">
+            <label>📁 保存路径</label>
+            <div class="path-row">
+                <input type="text" id="savePath" value="./Downloaded" readonly>
+                <button id="browseBtn" class="browse-btn">📂</button>
+            </div>
+        </div>
+        <div class="config-section">
+            <label>⚡ 线程数</label>
+            <select id="threadNum">
+                <option value="3">3</option>
+                <option value="5" selected>5</option>
+                <option value="8">8</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button id="getCookieBtn" class="btn-cookie">🍪 导入当前登录</button>
+            <button id="downloadBtn" class="btn-download">🚀 开始下载</button>
+            <button id="stopBtn" class="btn-stop" disabled>⏹ 停止</button>
+        </div>
+        <div id="cookieStatus" class="status">尚未导入 Cookie</div>
+        <div class="log-header">
+            <span>📜 下载日志</span>
+            <div>
+                <button id="copyLogBtn" class="log-action-btn">📋 复制</button>
+                <button id="clearLogBtn" class="log-action-btn">🗑️ 清除</button>
+            </div>
+        </div>
+        <div id="logArea" class="log-area"></div>
+    </div>
+
+    <!-- 右侧浏览器区域 -->
+    <div class="right-panel" id="rightPanel">
+        <div id="expandHint" class="expand-hint" style="display:none;">
+            <button id="expandPanelBtn" class="toggle-btn" title="展开面板">▶</button>
+        </div>
+        <div class="browser-controls">
+            <input type="text" id="urlBar" class="url-bar" value="https://www.douyin.com" placeholder="输入链接后回车">
+            <button id="goBtn" class="go-btn">→</button>
+        </div>
+        <webview id="douyinWebview" partition="persist:douyin_webview"
+                 preload="./webview-preload.js"
+                 src="https://www.douyin.com"
+                 allowpopups
+                 useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                 style="width:100%; height:calc(100% - 40px)">
+        </webview>
+    </div>
+</div>
+<script src="renderer.js"></script>
+</body>
+</html>

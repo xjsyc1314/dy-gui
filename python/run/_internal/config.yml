@@ -1,0 +1,111 @@
+link:
+  - https://www.douyin.com/video/7634400852241657315
+#  - https://www.douyin.com/note/7636034698389850282
+#  - https://www.douyin.com/video/7632273177507607039
+
+mode:
+  - post
+
+number:
+  post: 0  # 0 表示全部下载
+  like: 0
+  allmix: 0
+  mix: 0
+  music: 0
+  collect: 0
+  collectmix: 0
+
+path: ./Downloaded/
+
+
+music: true
+cover: true
+avatar: true
+json: true
+
+start_time: ""
+end_time: ""
+
+folderstyle: true
+
+
+increase:
+  post: false
+  like: false
+  allmix: false
+  mix: false
+  music: false
+
+thread: 5
+retry_times: 3
+proxy: ""
+database: false
+database_path: dy_downloader.db
+
+progress:
+  quiet_logs: true
+
+transcript:
+  enabled: false
+  model: gpt-4o-mini-transcribe
+  output_dir: ""
+  response_formats:
+    - txt
+    - json
+  api_url: https://api.openai.com/v1/audio/transcriptions
+  api_key_env: OPENAI_API_KEY
+  api_key: ""
+
+browser_fallback:
+  enabled: true
+  headless: false
+  max_scrolls: 240
+  idle_rounds: 8
+  wait_timeout_seconds: 600
+
+# 评论采集（可选）：启用后每个作品会额外生成 *_comments.json
+comments:
+  enabled: false
+  include_replies: false
+  max_comments: 0   # 0 = 不限
+  page_size: 20
+
+# 直播录制（可选）：当 link 指向 live.douyin.com/{room_id} 或 /follow/live/{room_id} 时生效
+live:
+  max_duration_seconds: 0   # 0 = 录到主播下播
+  chunk_size: 65536
+  idle_timeout_seconds: 30
+
+# 下载完成通知（可选）。providers 支持 bark / telegram / webhook
+notifications:
+  enabled: false
+  on_success: true
+  on_failure: true
+  providers: []
+  # 示例：
+  # providers:
+  #   - type: bark
+  #     url: https://api.day.app/YOUR_DEVICE_KEY
+  #     sound: bell
+  #   - type: telegram
+  #     bot_token: "123456:ABC..."
+  #     chat_id: "987654321"
+  #   - type: webhook
+  #     url: https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx
+  #     extra_body:
+  #       msgtype: text
+
+# REST API 服务模式（可选，需额外安装 fastapi + uvicorn）
+server:
+  max_jobs: 500
+  job_ttl_seconds: 86400   # 完成态 job 保留 24 小时
+
+# 登录信息 配置不同的 下载不同
+cookies:
+  msToken: aVRUPSdVIEPojDeYrePlNWjXCuPYO1VnXkvR_EjPa-LeutTSb3p6q1wwxmbiHkjmtkc6HXcJ8RnaRQAIFEsExPIWVRuAQCJVKtWNhSFEbKHvvFbI71jnbnL8MkhsJ5zYodmSIpyBg0MZcLi5aaxX_G4BwAazi7ZnYdi9yiqPBO1o63q5XEatXw==
+  ttwid: 1%7C2fUGARkgvIKw_u62BQLHUxrVzHljzuzZLkTE9EBQ12g%7C1777221332%7C7e17461ebb6de01d063dc93fe5847071e4d45749ab44e9ba39c7c37f36c53a20
+  odin_tt: b18ab70f96600bc1dccbfaeb732fd0974ac0a4c452a8fb66a204c1996d4777335cb60cd77670160c234ed9abffdf041633cef906b64361c9f06100d21e5ecb3e
+  passport_csrf_token: 2c6cce55ba31546acdb7c3ed71bd8c8b
+  sid_guard: 624c45bf9825d2fcb84a85295eed7d81%7C1777221326%7C5183999%7CThu%2C+25-Jun-2026+16%3A35%3A25+GMT
+
+
