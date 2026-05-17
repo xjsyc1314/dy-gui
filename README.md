@@ -6,8 +6,6 @@
 
 **环境要求：**
 - Node.js 20.x（推荐使用 nvm 管理）
-- Python 3.10+（推荐使用 conda 环境）
-- 已安装 `douyin-downloader` 的依赖和 Playwright 浏览器
 
 **启动步骤：**
 ```bash
